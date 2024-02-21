@@ -10,7 +10,7 @@ function MyArrayProto() {
             }
         } else {
             result = this[this.length-1];
-            for (let i = this.length-1; i>=0; i--) {
+            for (let i = this.length-1; i>=1; i--) {
                 result = callback(result, this[i-1], this, i)
             }
         }
@@ -30,10 +30,8 @@ MyArray.prototype = new MyArrayProto();
 const numbers = new MyArray(1,2,3,4,5);
 const reducedNumbers = numbers.reduceRight(
     function (pV, cV) {
-        pV.push(cV);
-        return pV
+        return pV + cV;
     },
-    []
 );
 
 console.log(reducedNumbers);
